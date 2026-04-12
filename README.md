@@ -66,6 +66,8 @@ pytest
 You can add more tests in `tests/test_recommender.py`.
 
 ---
+## Output 
+<img width="918" height="383" alt="Screenshot 2026-04-12 at 5 49 21 PM" src="https://github.com/user-attachments/assets/ba721ce1-fbd1-4af5-acae-2b4c8f4e3b6f" />
 
 ## Experiments You Tried
 
