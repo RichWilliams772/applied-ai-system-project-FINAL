@@ -74,6 +74,24 @@ In addition, the scoring logic was checked by reviewing individual song scores t
 
 Although no formal numeric metric was required, the system effectively measured relevance by assigning higher scores to songs that more closely matched the user profile. This score acts as a proxy for how likely a user is to enjoy a song, allowing the system to rank recommendations accordingly.
 
+After increasing the weight of energy and decreasing the weight of genre, the recommender began prioritizing songs that were closest in energy rather than strictly matching genre. This resulted in more variety, but sometimes less accurate genre matches. This experiment showed that the system is sensitive to weight changes and that energy can dominate the recommendation if weighted too heavily.
+
+## Profile Comparisons
+
+High-Energy Pop vs Chill Lofi:
+The High-Energy Pop profile returned upbeat, energetic songs with low acousticness, while the Chill Lofi profile shifted toward slower, softer, and more acoustic tracks. This makes sense because the energy and acoustic preferences are very different, which directly impacts the scoring.
+
+High-Energy Pop vs Deep Intense Rock:
+Both profiles preferred high-energy songs, but the rock profile produced more intense and less “happy” songs compared to pop. This shows that genre and mood together help distinguish songs that have similar energy levels but different styles.
+
+Chill Lofi vs Deep Intense Rock:
+The Chill Lofi profile favored low-energy, relaxed, and acoustic songs, while the rock profile favored high-energy, intense tracks. This contrast demonstrates that the recommender responds well to large differences in user preferences.
+
+Chill Lofi vs Edge Case (Sad + High Energy):
+The Chill Lofi profile produced calm and consistent results, while the edge-case profile often returned energetic songs that did not match the mood. This shows that the system struggles when preferences conflict and tends to prioritize energy over mood.
+
+High-Energy Pop vs Edge Case (Sad + High Energy):
+Both profiles produced energetic songs, but the edge-case profile showed less consistent mood matching. This suggests that the system handles clear preferences better than conflicting ones and highlights a limitation in balancing multiple features.
 ---
 
 ## 8. Future Work

@@ -1,14 +1,11 @@
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple
 from dataclasses import dataclass
 import csv
 
 
 @dataclass
 class Song:
-    """
-    Represents a song and its attributes.
-    Required by tests/test_recommender.py
-    """
+    """Represent a song and its audio/content features."""
     id: int
     title: str
     artist: str
@@ -23,10 +20,7 @@ class Song:
 
 @dataclass
 class UserProfile:
-    """
-    Represents a user's taste preferences.
-    Required by tests/test_recommender.py
-    """
+    """Represent a user's music taste preferences."""
     favorite_genre: str
     favorite_mood: str
     target_energy: float
@@ -34,33 +28,37 @@ class UserProfile:
 
 
 class Recommender:
-    """
-    OOP implementation of the recommendation logic.
-    Required by tests/test_recommender.py
-    """
+    """Provide object-oriented recommendation behavior for songs."""
+
     def __init__(self, songs: List[Song]):
         self.songs = songs
 
     def _score_song_oop(self, user: UserProfile, song: Song) -> float:
+        """Compute weighted score with energy emphasized."""
         score = 0.0
 
+        # ↓ LOWER GENRE WEIGHT
         if song.genre == user.favorite_genre:
-            score += 2.0
+            score += 1.0
 
+        # SAME MOOD WEIGHT
         if song.mood == user.favorite_mood:
             score += 1.0
 
+        # ↑ HIGHER ENERGY IMPORTANCE
         energy_similarity = 1 - abs(song.energy - user.target_energy)
-        score += max(0.0, energy_similarity) * 2.0
+        score += max(0.0, energy_similarity) * 4.0
 
+        # acoustic preference
         if user.likes_acoustic:
-            score += song.acousticness * 1.0
+            score += song.acousticness
         else:
-            score += (1 - song.acousticness) * 1.0
+            score += (1 - song.acousticness)
 
         return round(score, 3)
 
     def recommend(self, user: UserProfile, k: int = 5) -> List[Song]:
+        """Return top k recommended songs for a user."""
         scored_songs = sorted(
             self.songs,
             key=lambda song: self._score_song_oop(user, song),
@@ -69,16 +67,17 @@ class Recommender:
         return scored_songs[:k]
 
     def explain_recommendation(self, user: UserProfile, song: Song) -> str:
+        """Generate explanation for weight-shifted scoring."""
         reasons = []
 
         if song.genre == user.favorite_genre:
-            reasons.append("genre match (+2.0)")
+            reasons.append("genre match (+1.0)")
 
         if song.mood == user.favorite_mood:
             reasons.append("mood match (+1.0)")
 
         energy_similarity = 1 - abs(song.energy - user.target_energy)
-        energy_points = max(0.0, energy_similarity) * 2.0
+        energy_points = max(0.0, energy_similarity) * 4.0
         reasons.append(f"energy similarity (+{energy_points:.2f})")
 
         if user.likes_acoustic:
@@ -92,16 +91,13 @@ class Recommender:
 
 
 def load_songs(csv_path: str) -> List[Dict]:
-    """
-    Loads songs from a CSV file.
-    Required by src/main.py
-    """
+    """Load songs from CSV into dictionaries."""
     songs = []
 
     with open(csv_path, "r", encoding="utf-8") as file:
         reader = csv.DictReader(file)
         for row in reader:
-            song = {
+            songs.append({
                 "id": int(row["id"]),
                 "title": row["title"],
                 "artist": row["artist"],
@@ -112,51 +108,51 @@ def load_songs(csv_path: str) -> List[Dict]:
                 "valence": float(row["valence"]),
                 "danceability": float(row["danceability"]),
                 "acousticness": float(row["acousticness"]),
-            }
-            songs.append(song)
+            })
 
     return songs
 
 
 def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
-    """
-    Scores a single song against user preferences.
-    Required by recommend_songs() and src/main.py
-    """
+    """Score song with energy-heavy weighting."""
     score = 0.0
     reasons = []
 
+    # ↓ LOWER GENRE WEIGHT
     if song["genre"] == user_prefs["genre"]:
-        score += 2.0
-        reasons.append("genre match (+2.0)")
+        score += 1.0
+        reasons.append("genre match (+1.0)")
 
+    # SAME MOOD
     if song["mood"] == user_prefs["mood"]:
         score += 1.0
         reasons.append("mood match (+1.0)")
 
+    # ↑ ENERGY DOMINATES
     energy_similarity = 1 - abs(song["energy"] - user_prefs["energy"])
-    energy_points = max(0.0, energy_similarity) * 2.0
+    energy_points = max(0.0, energy_similarity) * 4.0
     score += energy_points
     reasons.append(f"energy similarity (+{energy_points:.2f})")
 
-    likes_acoustic = user_prefs.get("likes_acoustic", False)
-    if likes_acoustic:
-        acoustic_points = song["acousticness"] * 1.0
+    # acoustic
+    if user_prefs.get("likes_acoustic", False):
+        acoustic_points = song["acousticness"]
         score += acoustic_points
         reasons.append(f"acoustic preference (+{acoustic_points:.2f})")
     else:
-        acoustic_points = (1 - song["acousticness"]) * 1.0
+        acoustic_points = 1 - song["acousticness"]
         score += acoustic_points
         reasons.append(f"less acoustic preference (+{acoustic_points:.2f})")
 
     return round(score, 3), reasons
 
 
-def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
-    """
-    Functional implementation of the recommendation logic.
-    Required by src/main.py
-    """
+def recommend_songs(
+    user_prefs: Dict,
+    songs: List[Dict],
+    k: int = 5
+) -> List[Tuple[Dict, float, str]]:
+    """Return top k ranked songs using new weights."""
     scored_results = []
 
     for song in songs:
