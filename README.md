@@ -68,6 +68,8 @@ You can add more tests in `tests/test_recommender.py`.
 ---
 ## Output 
 <img width="918" height="383" alt="Screenshot 2026-04-12 at 5 49 21 PM" src="https://github.com/user-attachments/assets/ba721ce1-fbd1-4af5-acae-2b4c8f4e3b6f" />
+<img width="894" height="724" alt="Screenshot 2026-04-12 at 6 02 14 PM" src="https://github.com/user-attachments/assets/adfc2b71-8e58-4416-b3f7-dcbd7291d7f1" />
+<img width="910" height="738" alt="Screenshot 2026-04-12 at 6 01 55 PM" src="https://github.com/user-attachments/assets/8939af8c-2c6d-4b1a-a0e5-b628b6a3354f" />
 
 ## Experiments You Tried
 
