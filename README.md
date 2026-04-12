@@ -1,15 +1,5 @@
 # 🎵 Music Recommender Simulation
 
-
-
-## UserProfile features used in the simulation
-
-preferred_genre
-preferred_mood
-preferred_energy
-preferred_tempo_bpm
-preferred_valence (if available)
-
 ## Project Summary
 
 In this project you will build and explain a small music recommender system.
