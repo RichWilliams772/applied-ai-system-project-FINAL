@@ -27,7 +27,8 @@ After every song has been scored, the recommender sorts the songs from highest s
 
 A simple way to view the flow is:
 
-Song data + User profile → Compare features → Compute score → Rank songs → Return top recommendations
+<img width="533" height="1938" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/84a2e8d6-1a06-44ec-8ee4-43e3d69cd4c0" />
+
 
 ---
 
