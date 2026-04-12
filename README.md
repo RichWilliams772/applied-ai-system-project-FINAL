@@ -1,5 +1,25 @@
 # 🎵 Music Recommender Simulation
 
+## How The System Works
+
+Real-world recommendation systems predict what users may enjoy by analyzing user behavior, item attributes, and large-scale interaction patterns. Platforms like Spotify or TikTok often combine collaborative filtering, which learns from similar users, with content-based methods, which focus on item features such as genre, mood, tempo, and energy. This simulation uses a content-based approach that compares each song’s attributes to a user’s taste profile. The system prioritizes similarity in genre, mood, energy, and tempo, then assigns a weighted relevance score to each song and ranks songs from best match to worst match.
+
+## Song features used in the simulation
+
+genre
+mood
+energy
+tempo_bpm
+valence (if available)
+
+## UserProfile features used in the simulation
+
+preferred_genre
+preferred_mood
+preferred_energy
+preferred_tempo_bpm
+preferred_valence (if available)
+
 ## Project Summary
 
 In this project you will build and explain a small music recommender system.
