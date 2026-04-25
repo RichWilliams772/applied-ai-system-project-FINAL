@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "genre": "pop",
+    "mood": "energetic",
+    "explicit": false
+  },
+  {
+    "title": "Lose Yourself",
+    "artist": "Eminem",
+    "genre": "rap",
+    "mood": "motivational",
+    "explicit": true
+  },
+  {
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "genre": "pop",
+    "mood": "upbeat",
+    "explicit": false
+  },
+  {
+    "title": "Weightless",
+    "artist": "Marconi Union",
+    "genre": "ambient",
+    "mood": "calm",
+    "explicit": false
+  },
+  {
+    "title": "SICKO MODE",
+    "artist": "Travis Scott",
+    "genre": "rap",
+    "mood": "hype",
+    "explicit": true
+  }
+]
