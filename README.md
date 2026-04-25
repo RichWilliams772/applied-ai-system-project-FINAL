@@ -49,28 +49,25 @@ Logger (records results)
 <img width="536" height="1382" alt="mermaid-diagram (1)" src="https://github.com/user-attachments/assets/e13d2d1d-d934-41fc-b7b3-e0b15bd5a6fa" />
 
 
-## Getting Started
-Setup
 
-Create a virtual environment (optional):
+## 🚀 Getting Started
 
+### Setup
+
+1. Create a virtual environment (optional):
+
+```bash
 python3 -m venv .venv
-
 source .venv/bin/activate
 
-Install dependencies:
+2. Install dependencies:
 
 pip3 install -r requirements.txt
 
-Run the system:
-
+3. Run the system:
 python3 src/main.py
 
-Running Tests
-
-pytest
-
-Sample Outputs
+### Sample Outputs
 
 Example 1: Clean upbeat request
 
@@ -86,6 +83,7 @@ Confidence Score: 0.8
 Reliability: Passed
 Example 2: Calm ambient request
 
+Example 2: Calm music request 
 Input:
 
 Give me calm ambient music
@@ -96,6 +94,8 @@ Weightless by Marconi Union
 Confidence Score: 0.65
 Reliability: Passed
 Example 3: Constraint conflict (advanced case)
+
+Example 3: Invalid reccomendation
 
 Input:
 
