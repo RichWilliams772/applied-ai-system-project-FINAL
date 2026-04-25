@@ -1,4 +1,10 @@
 # 🎵 AI Music Discovery & Insight System
+## Loom Demo
+
+Watch the full system walkthrough here:  
+
+https://www.loom.com/share/19458ac3aef345a2bf3bd5d4d3075de1
+
 ## Project Summary
 
 This project extends my original Music Recommender Simulation into a full applied AI system.
