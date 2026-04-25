@@ -39,9 +39,9 @@ Final Output + Confidence Score
    ↓
 Logger (records results)
 
-## The architecture diagram is saved in:
+## architecture diagram 
+<img width="536" height="1382" alt="mermaid-diagram (1)" src="https://github.com/user-attachments/assets/e13d2d1d-d934-41fc-b7b3-e0b15bd5a6fa" />
 
-assets/architecture.png
 
 ## Getting Started
 Setup
