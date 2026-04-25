@@ -34,4 +34,19 @@
     "mood": "hype",
     "explicit": true
   }
+  ,
+  {
+  "title": "Sunflower",
+  "artist": "Post Malone",
+  "genre": "pop",
+  "mood": "chill",
+  "explicit": false
+  },
+  {
+  "title": "Titanium",
+  "artist": "David Guetta",
+  "genre": "electronic",
+  "mood": "energetic",
+  "explicit": false
+  }
 ]
